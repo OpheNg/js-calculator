@@ -50,21 +50,35 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .number{
-  background-color: rgb(38, 43, 149);
+  background-color: rgb(84, 87, 144);
   color: white;
   font-weight: bold;
   margin-right: 8px;
+}
+.number:hover{
+  background-color: rgb(145, 150, 252);
 }
 .operator{
   background-color: rgb(193, 189, 189);
   color: rgb(44, 44, 44);
   font-weight: bold;
+  font-family: sans-serif;
+}
+.operator:hover{
+  background-color: rgb(229, 229, 229);
+}
+.coma{
+  margin-right: 8px;
 }
 .clear{
   background-color:rgb(225, 148, 5);
   color: white;
   font-weight: bold;
   margin-right: 8px;
+}
+.clear:hover{
+  background-color:rgb(187, 90, 0);
+  /* color: rgb(136, 48, 4); */
 }
 .equal{
   height: 80px;
@@ -80,4 +94,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.equal:hover{
+  background-color:rgb(109, 214, 102);
+  color: rgb(46, 45, 45);
 }
