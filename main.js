@@ -23,14 +23,23 @@ function divide(a,b){
 function operate(operator, a, b){
   switch (operator){
     case '+':
-    add(a,b);
+      add(a,b);
+      break;
     case '-':
-    substract(a,b);
+      substract(a,b);
+      break;
     case '*':
-    multiply(a,b);
+      multiply(a,b);
+      break;
     case '/':
     divide(a,b);
   }
 }
 
-
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button)=>{
+  button.addEventListener('click',()=>{
+    let displayValue = button.value;
+    console.log(displayValue);
+  });
+});
