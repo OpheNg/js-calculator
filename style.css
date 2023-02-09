@@ -58,6 +58,23 @@ body{
   border-radius: 4px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+.text{
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80px;
+  /* width: 80px; */
+  color: white;
+  font-family: sans-serif;
+  flex: 1;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.del:hover{
+  
+}
 .number{
   background-color: rgb(84, 87, 144);
   color: white;
