@@ -72,8 +72,12 @@ body{
   border-radius: 4px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+.text p{
+  color: white;
+  font-family: sans-serif;
+}
 .del:hover{
-  
+
 }
 .number{
   background-color: rgb(84, 87, 144);
