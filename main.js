@@ -65,17 +65,39 @@ function display(){
             operator = displayValue;
             a = input;
             input = "";
+
           }
       else if (displayValue === "."){
-
-
-
+          input += displayValue;
       }
+
+      else if (displayValue === ""){
+        a = "";
+        b = "";
+        operator = "";
+        input ="";
+      }
+
       else if (displayValue === "="){
         b = input;
-        input = operate(operator, parseFloat(a), parseFloat(b));
-        screen.textContent = input;
+        if (a === "" || operator === "") {
+          alert('Error: Please be sure to enter a number and an operator first');
+        } else {
+          input = operate(operator, parseFloat(a), parseFloat(b)).toFixed(4);
+          screen.textContent = input;
+        }
       }
+
+      // else if (displayValue === "="){
+      //   b = input;
+      //   input = operate(operator, parseFloat(a), parseFloat(b));
+      //   screen.textContent = input;
+      // }
+
+      // else if (displayValue === "=" && a==="" && b===""){
+      //   alert('Error: Please be sure to enter a number and an operator first');
+      // }
+
       else {
         input += displayValue;
       }
@@ -84,7 +106,6 @@ function display(){
     });
   });
 }
-
 display();
 
 
