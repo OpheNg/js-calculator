@@ -1,4 +1,4 @@
-// operation functions //
+// basic operation functions //
 
 function add(a,b){
   return (a + b);
@@ -15,14 +15,14 @@ function multiply(a,b){
 function divide(a,b){
   if (b === 0) {
     console.log("Impossible to divide by 0 !\nPlease enter another number");
-    alert("Impossible to divide by 0 !\nPlease enter another number");
+    alert("Error : Impossible to divide by 0 !\nPlease enter another number");
   }
   else{
     return (a/b);
   }
 }
 
-// operate //
+// ---------------------------------------------------
 
 function operate(operator, a, b){
   switch (operator){
@@ -34,7 +34,7 @@ function operate(operator, a, b){
       result = substract(a,b);
       console.log(result);
       break;
-    case '*':
+    case 'x':
       result = multiply(a,b);
       console.log(result);
       break;
@@ -53,7 +53,7 @@ function display(){
   let b ='';
   let operator = '';
   let input ='';
-  
+
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
@@ -66,6 +66,11 @@ function display(){
             a = input;
             input = "";
           }
+      else if (displayValue === "."){
+
+
+
+      }
       else if (displayValue === "="){
         b = input;
         input = operate(operator, parseInt(a), parseInt(b));
@@ -80,5 +85,15 @@ function display(){
   });
 }
 
-
 display();
+
+
+// WHAT'S LEFT TO DO //
+
+//1) fix the code to make decimal work
+
+//2) Clear result before new operation
+
+//3) implement DEL function
+
+//4) Keyboard
