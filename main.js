@@ -27,39 +27,48 @@ function divide(a,b){
 function operate(operator, a, b){
   switch (operator){
     case '+':
-      let addResult = add(a,b);
+      result = add(a,b);
       console.log(addResult);
       break;
     case '-':
-      let subResult = substract(a,b);
+      result = substract(a,b);
       console.log(subResult);
       break;
     case '*':
-      let multiResult = multiply(a,b);
+      result = multiply(a,b);
       console.log(multiResult);
       break;
     case '/':
-      let divideResult = divide(a,b);
+      result = divide(a,b);
       console.log(divideResult);
   }
+  return result;
 }
 
 // display function //
 
 function display(){
+  let input ='';
+  let first = '';
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
       let displayValue = button.value;
       let screen = document.getElementById('display');
-      screen.textContent = (displayValue);
-      console.log(displayValue);
+
+      if (displayValue === "+" ||displayValue === "-"
+          || displayValue === "x" ||displayValue === "/" ){
+            input = "";
+          }
+      else {
+        input += displayValue;
+      }
+      screen.textContent = input;
+      // screen.textContent = (displayValue);
+      // console.log(displayValue);
     });
   });
 }
 
 // link buttons to a & b ??? //
-
-
-
 display();
