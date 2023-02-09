@@ -65,17 +65,29 @@ function display(){
             operator = displayValue;
             a = input;
             input = "";
-
           }
       else if (displayValue === "."){
+        if (input.includes(".")){
+          alert("Error : Only one decimal point is allowed in a number");
+        }
+        else if (input.includes(".")){
+          alert("Error : Only one decimal point is allowed in a number");
+        }
+        else{
           input += displayValue;
+        }
       }
-
+      // DEL //
       else if (displayValue === ""){
+        input = input.slice(0,-1);
+        console.log(input);
+      }
+      else if (displayValue === "clear") {
         a = "";
         b = "";
         operator = "";
-        input ="";
+        input = "";
+        screen.textContent = "";
       }
 
       else if (displayValue === "="){
@@ -83,21 +95,10 @@ function display(){
         if (a === "" || operator === "") {
           alert('Error: Please be sure to enter a number and an operator first');
         } else {
-          input = operate(operator, parseFloat(a), parseFloat(b)).toFixed(4);
+          input = operate(operator, parseFloat(a), parseFloat(b)).toFixed(2);
           screen.textContent = input;
         }
       }
-
-      // else if (displayValue === "="){
-      //   b = input;
-      //   input = operate(operator, parseFloat(a), parseFloat(b));
-      //   screen.textContent = input;
-      // }
-
-      // else if (displayValue === "=" && a==="" && b===""){
-      //   alert('Error: Please be sure to enter a number and an operator first');
-      // }
-
       else {
         input += displayValue;
       }
@@ -107,14 +108,3 @@ function display(){
   });
 }
 display();
-
-
-// WHAT'S LEFT TO DO //
-
-//1) fix the code to make decimal work
-
-//2) Clear result before new operation
-
-//3) implement DEL function
-
-//4) Keyboard
