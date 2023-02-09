@@ -28,19 +28,19 @@ function operate(operator, a, b){
   switch (operator){
     case '+':
       result = add(a,b);
-      console.log(addResult);
+      console.log(result);
       break;
     case '-':
       result = substract(a,b);
-      console.log(subResult);
+      console.log(result);
       break;
     case '*':
       result = multiply(a,b);
-      console.log(multiResult);
+      console.log(result);
       break;
     case '/':
       result = divide(a,b);
-      console.log(divideResult);
+      console.log(result);
   }
   return result;
 }
@@ -48,8 +48,12 @@ function operate(operator, a, b){
 // display function //
 
 function display(){
+
+  let a ='';
+  let b ='';
+  let operator = '';
   let input ='';
-  let first = '';
+  
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
@@ -58,17 +62,23 @@ function display(){
 
       if (displayValue === "+" ||displayValue === "-"
           || displayValue === "x" ||displayValue === "/" ){
+            operator = displayValue;
+            a = input;
             input = "";
           }
+      else if (displayValue === "="){
+        b = input;
+        input = operate(operator, parseInt(a), parseInt(b));
+        screen.textContent = input;
+      }
       else {
         input += displayValue;
       }
       screen.textContent = input;
-      // screen.textContent = (displayValue);
-      // console.log(displayValue);
+      console.log(input);
     });
   });
 }
 
-// link buttons to a & b ??? //
+
 display();
