@@ -1,3 +1,5 @@
+// operation functions //
+
 function add(a,b){
   return (a + b);
 }
@@ -20,26 +22,44 @@ function divide(a,b){
   }
 }
 
+// operate //
+
 function operate(operator, a, b){
   switch (operator){
     case '+':
-      add(a,b);
+      let addResult = add(a,b);
+      console.log(addResult);
       break;
     case '-':
-      substract(a,b);
+      let subResult = substract(a,b);
+      console.log(subResult);
       break;
     case '*':
-      multiply(a,b);
+      let multiResult = multiply(a,b);
+      console.log(multiResult);
       break;
     case '/':
-    divide(a,b);
+      let divideResult = divide(a,b);
+      console.log(divideResult);
   }
 }
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button)=>{
-  button.addEventListener('click',()=>{
-    let displayValue = button.value;
-    console.log(displayValue);
+// display function //
+
+function display(){
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+      let displayValue = button.value;
+      let screen = document.getElementById('display');
+      screen.textContent = (displayValue);
+      console.log(displayValue);
+    });
   });
-});
+}
+
+// link buttons to a & b ??? //
+
+
+
+display();

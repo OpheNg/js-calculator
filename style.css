@@ -25,6 +25,9 @@
   background-color: rgb(217, 217, 217);
   height: 50px;
   margin-bottom: 12px;
+  text-align: right;
+  font-family: sans-serif;
+  font-size: 48px;
 }
 .row{
   display: flex;
