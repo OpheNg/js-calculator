@@ -86,6 +86,9 @@ body{
   margin-right: 8px;
 }
 .number:hover{
+  background-color:rgb(89, 95, 201); ;
+}
+.number:active{
   background-color: rgb(145, 150, 252);
 }
 .operator{
@@ -94,6 +97,9 @@ body{
   font-weight: bold;
   font-family: sans-serif;
 }
+/* .operator:active{
+  background-color: black;
+} */
 .operator:hover{
   background-color: rgb(229, 229, 229);
 }

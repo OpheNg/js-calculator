@@ -73,7 +73,7 @@ function display(){
       }
       else if (displayValue === "="){
         b = input;
-        input = operate(operator, parseInt(a), parseInt(b));
+        input = operate(operator, parseFloat(a), parseFloat(b));
         screen.textContent = input;
       }
       else {
