@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgb(244,248,255);
+background: linear-gradient(90deg, rgba(244,248,255,1) 0%, rgba(108,116,159,0.375875350140056) 64%, rgba(148,151,231,0.3114495798319328) 96%);
 }
 
 .calculator{
