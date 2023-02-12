@@ -1,110 +1,171 @@
-// basic operation functions //
 
-function add(a,b){
-  return (a + b);
-}
+const numbers = document.querySelectorAll("[data-number]");
+const operations = document.querySelectorAll("[data-operation]");
+const currentOperandText = document.querySelector("[data-current-operand]");
+const deleteButton = document.querySelector("[data-delete]");
+const reset = document.querySelector("[data-reset]");
+const equal = document.querySelector("[data-equal]");
+const dot = document.querySelector("[data-dot]");
 
-function substract(a,b){
-  return (a - b);
-}
+let currentOperand = '';
+let previousOperand = '';
+let operation = undefined;
 
-function multiply(a,b){
-  return (a * b);
-}
+numbers.forEach(button => {
+    button.addEventListener("click" , () => {
+        if(currentOperand == '' && button.textContent == 0 && previousOperand == ""){
+            currentOperandText.textContent = currentOperandText.textContent;
+            alert("You cannot start with zero!")
+            operate(operation);
+        }else{
+            currentOperandText.textContent += button.innerText;
+            currentOperand += button.innerText;
+                dot.disabled = false;
+            }  
+    })
+})
 
-function divide(a,b){
-  if (b === 0) {
-    console.log("Impossible to divide by 0 !\nPlease enter another number");
-    alert("Error : Impossible to divide by 0 !\nPlease enter another number");
-  }
-  else{
-    return (a/b);
-  }
-}
-
-// ---------------------------------------------------
-
-function operate(operator, a, b){
-  switch (operator){
-    case '+':
-      result = add(a,b);
-      console.log(result);
-      break;
-    case '-':
-      result = substract(a,b);
-      console.log(result);
-      break;
-    case 'x':
-      result = multiply(a,b);
-      console.log(result);
-      break;
-    case '/':
-      result = divide(a,b);
-      console.log(result);
-  }
-  return result;
-}
-
-// display function //
-
-function display(){
-
-  let a ='';
-  let b ='';
-  let operator = '';
-  let input ='';
-
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach((button)=>{
-    button.addEventListener('click',()=>{
-      let displayValue = button.value;
-      let screen = document.getElementById('display');
-
-      if (displayValue === "+" ||displayValue === "-"
-          || displayValue === "x" ||displayValue === "/" ){
-            operator = displayValue;
-            a = input;
-            input = "";
-          }
-      else if (displayValue === "."){
-        if (input.includes(".")){
-          alert("Error : Only one decimal point is allowed in a number");
+operations.forEach(button => {
+    button.addEventListener("click", () => {
+        if(currentOperandText.textContent.charAt(currentOperandText.textContent.length - 1) == "+" || 
+            currentOperandText.textContent.charAt(currentOperandText.textContent.length - 1) == "×" || 
+            currentOperandText.textContent.charAt(currentOperandText.textContent.length - 1) == "-" || 
+            currentOperandText.textContent.charAt(currentOperandText.textContent.length - 1) == "/")
+        { 
+            operations.disabled = true;
+        }else if(currentOperand == "" && button == undefined){
+            operations.disabled = true;
+        }else if(currentOperand == ""){
+            operations.disabled = false;
+            operationSelect(operation);
+            currentOperandText.textContent += button.innerText;
+            operation = button.innerText;
+        }else{
+            operationSelect(operation);
+            currentOperandText.textContent += button.innerText;
+            operation = button.innerText;
         }
-        else if (input.includes(".")){
-          alert("Error : Only one decimal point is allowed in a number");
-        }
-        else{
-          input += displayValue;
-        }
-      }
-      // DEL //
-      else if (displayValue === ""){
-        input = input.slice(0,-1);
-        console.log(input);
-      }
-      else if (displayValue === "clear") {
-        a = "";
-        b = "";
-        operator = "";
-        input = "";
-        screen.textContent = "";
-      }
+        
+    })
+})
 
-      else if (displayValue === "="){
-        b = input;
-        if (a === "" || operator === "") {
-          alert('Error: Please be sure to enter a number and an operator first');
-        } else {
-          input = operate(operator, parseFloat(a), parseFloat(b)).toFixed(2);
-          screen.textContent = input;
-        }
-      }
-      else {
-        input += displayValue;
-      }
-      screen.textContent = input;
-      console.log(input);
-    });
-  });
+let operationSelect = function(operation){
+    if(previousOperand !== ""){
+        operate(operation);
+    }else{
+        previousOperand += currentOperand;
+        currentOperand="";
+        separateNumber();
+    }
 }
-display();
+
+let operate = function(operation){
+    const prev = parseFloat(previousOperand);
+    const current = parseFloat(currentOperand);
+
+    let result;
+    if(isNaN(prev) || isNaN(current)) return;
+
+    switch(operation){
+        case "+":
+            result = prev + current
+            break;
+        case "-":
+            result = prev - current
+            break;
+        case "×":
+            result = prev * current
+            break;
+        case "/":
+            if(current == ""){
+                alert("You can not divide this number to zero!")
+                currentOperandText.textContent = "";
+                currentOperand = "" ;
+                previousOperand = "";
+                operation="";
+            }else{
+                result = prev / current
+            }
+            break;
+        default: 
+            return;
+    }
+
+    if( result % 1 ===0){
+        previousOperand = result;
+    }else{
+        previousOperand = result.toFixed(2);
+    }
+
+    currentOperandText.textContent = previousOperand;
+    currentOperand = "";
+    operations.disabled = false;
+}
+
+equal.addEventListener("click", () => {
+    if(currentOperand !== "" && previousOperand == ""){
+        alert("you need to calculate a valid operation")
+    }else if(currentOperand == ""){
+        alert("you need to calculate a valid operation")
+    }else if(previousOperand == ""){
+        alert("you need to calculate a valid operation")
+    }
+    operate(operation);
+    
+})
+
+deleteButton.addEventListener("click", () => {
+    deleteElement();
+})
+
+let deleteElement = function(){
+    let newDisplay = currentOperandText.textContent.slice(0, currentOperandText.textContent.length - 1);
+    currentOperandText.textContent = newDisplay;
+   
+    if(currentOperand !== ""){
+        currentOperand = currentOperand.slice(0, currentOperand.length - 1);
+    }else if(operation !== ""){
+        operation = operation.slice(0, operation.length - 1)
+        operations.disabled = false;
+    }else if(previousOperand !== ""){
+        previousOperand = previousOperand.slice(0, previousOperand.length - 1);
+    }else if(currentOperandText.textContent == ""){
+        currentOperand = "";
+        previousOperand = "";
+    }
+}
+
+reset.addEventListener("click", () => {
+    clearAll();
+})
+
+
+let clearAll = function(){
+    currentOperandText.textContent = "";
+    currentOperand = "";
+    previousOperand = "";
+    operation = "";
+    dot.disabled = false;
+}
+
+dot.addEventListener("click", () => {
+    inportDot();
+})
+
+let inportDot = function(){
+    if(currentOperand == ""){
+        dot.disabled = true;
+    }else if(currentOperand !== "" && !currentOperandText.textContent.includes(".")){
+        currentOperandText.textContent += ".";
+        dot.disabled = false;
+        }
+}
+
+let separateNumber = function(){
+    let decimalNumber = currentOperandText.textContent;
+    let splitDec = decimalNumber.split(".")[0];
+    let splitDecSecond = decimalNumber.split(".")[1];
+    let actualNumber = `${splitDec}.${splitDecSecond}`
+    previousOperand = actualNumber;
+}
+
