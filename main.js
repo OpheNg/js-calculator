@@ -12,7 +12,6 @@ let operation = undefined;
 
 numbers.forEach(button => {
     button.addEventListener("click" , () => {
-        console.log(button)
         if(currentOperand == '' && button.textContent == 0 && previousOperand == ""){
             currentOperandText.textContent = currentOperandText.textContent;
             alert("You cannot start with zero!")
@@ -20,8 +19,6 @@ numbers.forEach(button => {
         }else{
             currentOperandText.textContent += button.innerText;
             currentOperand += button.innerText;
-                console.log("c" + currentOperand)
-                console.log("p" + previousOperand)
                 dot.disabled = false;
             }  
     })
@@ -53,7 +50,6 @@ operations.forEach(button => {
 
 let operationSelect = function(operation){
     if(previousOperand !== ""){
-        console.log(operation);
         operate(operation);
     }else{
         previousOperand += currentOperand;
@@ -103,8 +99,6 @@ let operate = function(operation){
     currentOperandText.textContent = previousOperand;
     currentOperand = "";
     operations.disabled = false;
-    console.log("pt" + previousOperand)
-    console.log(operations)
 }
 
 equal.addEventListener("click", () => {
@@ -129,13 +123,10 @@ let deleteElement = function(){
    
     if(currentOperand !== ""){
         currentOperand = currentOperand.slice(0, currentOperand.length - 1);
-        console.log("c" + currentOperand);
     }else if(operation !== ""){
         operation = operation.slice(0, operation.length - 1)
         operations.disabled = false;
-        console.log(operation)
     }else if(previousOperand !== ""){
-        console.log("p" + previousOperand);
         previousOperand = previousOperand.slice(0, previousOperand.length - 1);
     }else if(currentOperandText.textContent == ""){
         currentOperand = "";
@@ -171,7 +162,6 @@ let inportDot = function(){
 
 let separateNumber = function(){
     let decimalNumber = currentOperandText.textContent;
-    console.log(decimalNumber)
     let splitDec = decimalNumber.split(".")[0];
     let splitDecSecond = decimalNumber.split(".")[1];
     let actualNumber = `${splitDec}.${splitDecSecond}`
