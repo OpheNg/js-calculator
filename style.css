@@ -1,9 +1,9 @@
-body{
+/* body{
   margin: 0;
 }
 
 .container{
-  /* margin: 30px; */
+
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -22,6 +22,7 @@ body{
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(46, 45, 45);
+
 }
 
 #display{
@@ -65,7 +66,7 @@ body{
   align-items: center;
   text-align: center;
   height: 80px;
-  /* width: 80px; */
+
   color: white;
   font-family: sans-serif;
   flex: 1;
@@ -76,9 +77,7 @@ body{
   color: white;
   font-family: sans-serif;
 }
-/* .del:hover{
 
-} */
 .number{
   background-color: rgb(84, 87, 144);
   color: white;
@@ -97,9 +96,7 @@ body{
   font-weight: bold;
   font-family: sans-serif;
 }
-/* .operator:active{
-  background-color: black;
-} */
+
 .operator:hover{
   background-color: rgb(229, 229, 229);
 }
@@ -114,14 +111,16 @@ body{
 }
 .clear:hover{
   background-color:rgb(187, 90, 0);
-  /* color: rgb(136, 48, 4); */
+
 }
 .equal{
   height: 80px;
   width: 100%;
   border-radius: 4px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  background-color:rgb(72, 184, 64);
+
+  background: rgb(131,175,251);
+  background: linear-gradient(90deg, rgba(131,175,251,1) 0%, rgba(49,130,226,1) 64%, rgba(148,151,231,1) 96%);
   color: white;
   font-weight: bold;
   margin-top: 12px;
@@ -132,6 +131,106 @@ body{
   text-align: center;
 }
 .equal:hover{
-  background-color:rgb(109, 214, 102);
+
   color: rgb(46, 45, 45);
+  background: rgb(101,134,192);
+background: linear-gradient(90deg, rgba(101,134,192,1) 0%, rgba(0,117,255,1) 43%, rgba(68,71,157,1) 96%);
+} */
+
+@font-face {
+  font-family: 'Righteous' ;
+  src: url(./font/Righteous-Regular.ttf) format("truetype") ;
 }
+
+*{
+  margin: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  font-family: 'Righteous' , sans-serif;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to right top, #2821c0, #2635c9, #2845d1, #2d55d8, #3563de, #2076ea, #0588f3, #0099fb, #00b1ff, #00c8ff, #00dcff, #19eff8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator{
+  width: 400px;
+  height: 500px;
+}
+
+.calculator div{
+  width: 100%;
+}
+
+.calculator .header{
+  height: 15%;
+  font-size: 30px;
+  background-color: rgb(77, 77, 255);
+  margin-bottom: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+
+.calculator .display{
+  height: 25%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 30px;
+  font-size: 40px;
+  background-color: rgb(0, 0, 179);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  color: wheat;
+}
+
+.calculator .main{
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(77, 77, 255);
+}
+
+.calculator .main .button-group{
+  flex: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.calculator .main .button-group.first button:last-child{
+  background-color: #2821c0 ;
+  color: white;
+}
+
+.calculator .main .button-group.last .button{
+  width: 49%;
+}
+.calculator .main .button-group.last .button:first-child{
+  background-color: #2821c0 ;
+  color: white;
+}
+.calculator .main .button-group.last .button:last-child{
+  background-color: rgb(255, 51, 51);
+  color: white;
+}
+
+.calculator .main .button-group .button{
+  width: 23%;
+  height: 90%;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  background-color: rgb(230, 230, 250);
+}
+
